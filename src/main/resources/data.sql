@@ -1,33 +1,26 @@
-DROP table IF EXISTS Cajas;
-DROP TABLE IF EXISTS Almacenes;
+drop table if exists Salas;
+drop table if exists Peliculas;
 
-
-
-create table Almacenes(
+create table Peliculas(
 id int auto_increment primary key,
-lugar varchar(100) not null,
-capacidad int not null
+nombre varchar(100) not null,
+calificacion_edad int not null
 );
 
-create table Cajas(
-numref char(5) primary key,
-contenido varchar(100) not null,
-valor int not null,
-id_almacen int not null,
-foreign key (id_almacen) references Almacenes(id) on delete cascade on update cascade
+create table Salas(
+id int auto_increment primary key,
+nombre varchar(100) not null,
+id_pelicula int not null,
+foreign key (id_pelicula) references Peliculas(id) on delete cascade on update cascade
 );
 
-
-insert  into Almacenes(lugar, capacidad) values ('Tarragona',7);
-insert  into Almacenes(lugar, capacidad) values ('Paris',15);
-insert  into Almacenes(lugar, capacidad) values ('Londres',5);
-insert  into Almacenes(lugar, capacidad) values ('Madrid',7);
-
-
-insert into Cajas values('4DS5','Metal',200,1);
-insert into Cajas values('4RT5','Plastico',26,2);
-insert into Cajas values('4YU5','Aluminio',100,2);
-insert into Cajas values('4IL5','Carbon',50,3);
-insert into Cajas values('4BG5','Azucar',30,4);
+insert into peliculas(nombre, calificacion_edad) values ('Los Increibles','7');
+insert into peliculas(nombre, calificacion_edad) values ('Forzen','7');
+insert into peliculas(nombre, calificacion_edad) values ('Terminator','16');
+insert into peliculas(nombre, calificacion_edad) values ('Hankok','16');
 
 
+insert into salas(nombre, id_pelicula) values ('Sala 1', 1);
+insert into salas(nombre, id_pelicula) values ('Sala 2', 2);
+insert into salas(nombre, id_pelicula) values ('Sala 3', 3);
+insert into salas(nombre, id_pelicula) values ('Sala 4', 4);
